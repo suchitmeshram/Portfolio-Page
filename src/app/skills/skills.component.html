@@ -1,0 +1,11 @@
+<section class="section">
+  <h1>Skills</h1>
+  <div class="skills">
+    @for (skill of skills; track skill) {
+      <div class="skill-item">
+        <img [src] = "skill.image" alt = "{{ skill.name }}" class="skill-image">
+        <li>{{ skill.name }}</li>
+      </div>
+    }
+  </div>
+</section>
