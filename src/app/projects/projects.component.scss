@@ -1,20 +1,214 @@
+
 .section {
-    background-color: black;
-    padding-top: 1%;
-    padding-bottom: 2%;
+  background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
+  padding: 5rem 0 8rem;
+}
+
+.section-heading,
+.projects {
+  width: min(1100px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.section-heading {
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--projects-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
 }
 
 .section h1 {
-    color: white;
-    margin: 0;
-    padding-left: 15%;
-    padding-top: 5%;
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.intro {
+  width: min(42rem, 100%);
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
 }
 
 .projects {
-    color: white;
-    font-size: 20px;
-    padding-left: 20%;
-    gap: 15px 5px;
-    padding-top: 2%;
+  display: grid;
+  gap: 3rem;
+}
+
+.project {
+  position: sticky;
+  top: 5rem;
+}
+
+.project-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+.project-meta {
+  padding: 2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 236, 140, 0.08), rgba(255, 236, 140, 0)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  color: white;
+}
+
+.project-index {
+  display: inline-flex;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.project-info {
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--projects-panel);
+  color: var(--projects-ink);
+}
+
+.project-label {
+  margin: 0 0 0.4rem;
+  color: var(--projects-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24rem;
+  text-transform: uppercase;
+}
+
+.project-header h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.tech,
+.desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.tech {
+  color: #2f2d27;
+}
+
+.desc {
+  color: #47443c;
+}
+
+.circle-icon {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 22px;
+}
+
+.circle-icon::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #fffd7f;
+  box-shadow: 0 0 6px 3px #fffd7f, 0 0 8px 3px #ffd600; /* Blue and yellow glow */
+}
+
+.circle-icon::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  background: #ffec8c;
+  border-radius: 50%;
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+}
+
+a {
+  width: fit-content;
+  text-decoration: none;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  color: #111111;
+  font-weight: 700;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+a:hover {
+  background-color: #111111;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@supports (animation-timeline: view()) {
+  .project:not(:last-child) {
+    view-timeline-name: --project-card;
+    view-timeline-axis: block;
+    animation-name: project-stack-scale;
+    animation-timeline: --project-card;
+    animation-range: entry 88% cover 45%;
+    animation-fill-mode: both;
+    transform-origin: center top;
+  }
+}
+
+@keyframes project-stack-scale {
+  0%, 75% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.88);
+  }
+}
+
+@media (min-width: 768px) {
+  .project-shell {
+    grid-template-columns: minmax(18rem, 0.9fr) 1.3fr;
+    min-height: min(72vh, 40rem);
+  }
+
+  .project-meta,
+  .project-info {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0 6rem;
+  }
+
+  .project {
+    top: 1.5rem;
+  }
+
+  .projects {
+    gap: 2rem;
+  }
 }

@@ -1,12 +1,35 @@
 <section class="section">
-  <h1>Projects</h1>
+  <div class="section-heading">
+    <!-- <p class="eyebrow">Selected Work</p> -->
+    <h1>Projects</h1>
+    <!-- <p class="intro">
+      Scroll through a stacked set of project cards. Each card stays in view long enough to read,
+      then scales back as the next one takes focus.
+    </p> -->
+  </div>
 
   <div class="projects">
     @for (project of projects; track $index) {
       <div class="project">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <p class="tech"><strong>Tech:</strong> {{ project.tech }}</p>
+        <div class="project-shell">
+          <div class="project-meta">
+            <span class="project-index">0{{ $index + 1 }}</span>
+            <div class="project-header">
+              <span class="circle-icon"></span>
+              <div>
+                <p class="project-label">Case Study</p>
+                <h3>{{ project.title }}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <p class="tech"><strong>Techstack:</strong> {{ project.tech }}</p>
+            <p class="desc"><strong>Description:</strong> {{ project.description }}</p>
+            <a href="javascript:void(0)" (click)="openChildModal(detailsModal, $index)">View Details</a>
+            <app-details-modal #detailsModal></app-details-modal>
+          </div>
+        </div>
       </div>
     }
   </div>

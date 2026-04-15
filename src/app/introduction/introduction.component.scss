@@ -1,18 +1,213 @@
-.section p {
-    font-size: 20px;
-    color: white;
-}
-
 .section {
-    padding :4% 15%;
-    background-color: black;
+    position: relative;
+    min-height: 190vh;
+    overflow-x: clip;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
 }
 
-.section h1{
-    font-size: 30px;
+.hero-panel {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 0 1.5rem;
+    transform-style: preserve-3d;
+    isolation: isolate;
+}
+
+.hero-panel::before,
+.hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-panel::before {
+    z-index: -2;
+    transform: translateZ(-1px) scale(2.2);
+    background:
+        radial-gradient(circle at 20% 25%, rgba(234, 175, 200, 0.65), transparent 18%),
+        radial-gradient(circle at 80% 30%, rgba(101, 78, 163, 0.9), transparent 24%),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 30%),
+        linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent 55%);
+    filter: blur(12px) saturate(115%);
+}
+
+.hero-panel::after {
+    z-index: -1;
+    background:
+        linear-gradient(180deg, rgba(7, 7, 10, 0.22), rgba(7, 7, 10, 0.7)),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 0,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 120px
+        );
+}
+
+.hero-copy {
+    width: min(900px, 100%);
+    text-align: center;
     color: white;
+    transform: translateZ(0);
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+    color: #f7d77d;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.32rem;
+    text-transform: uppercase;
+}
+
+.section h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 5.6rem);
+    line-height: 1.05;
+    text-wrap: balance;
+}
+
+.hero-note {
+    width: min(42rem, 100%);
+    margin: 1.5rem auto 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.04rem;
+}
+
+.content-panel {
+    position: relative;
+    z-index: 2;
+    margin-top: -24vh;
+    padding: 0 1.5rem 6rem;
+}
+
+.content-card {
+    width: min(980px, 100%);
+    margin: 0 auto;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2rem;
+    background: rgba(6, 6, 10, 0.7);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+}
+
+.content-card h2 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    color: white;
+}
+
+.intro {
+    display: flex;
+}
+
+.intro p {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .highlight {
     color: #e1f154 !important;
+}
+
+.btn {
+    margin-top: 2rem;
+    border: 2px solid rgb(252, 252, 170);
+    background: transparent;
+    color: rgb(252, 252, 170);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    width: min(12rem, 100%);
+    height: 60px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background: rgb(255, 255, 108);
+    color: black;
+    border-color: black;
+    transform: translateY(-2px);
+}
+
+@supports (animation-timeline: view()) {
+    .hero-copy {
+        animation: intro-fade-scale linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 45%;
+    }
+
+    .content-card {
+        animation: intro-card-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 38%;
+    }
+}
+
+@keyframes intro-fade-scale {
+    0% {
+        opacity: 0.55;
+        transform: translateY(4rem) scale(0.92);
+    }
+
+    45%, 100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes intro-card-rise {
+    0% {
+        opacity: 0.4;
+        transform: translateY(6rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        min-height: 170vh;
+    }
+
+    .content-panel {
+        margin-top: -16vh;
+        padding: 0 0.75rem 4rem;
+    }
+
+    .content-card {
+        padding: 1.25rem;
+        border-radius: 1.25rem;
+        width: 95%;
+    }
+
+    .content-card h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .intro p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .btn {
+        width: min(10rem, 100%);
+        height: 50px;
+        font-size: 1.5rem;
+    }
 }

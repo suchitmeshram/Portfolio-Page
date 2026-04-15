@@ -1,11 +1,8 @@
-<main class="app-container">
-<app-navbar></app-navbar>
-<header></header>
-<introduction></introduction>
-<skills></skills>
-<projects></projects>
-<experience></experience>
-<footer></footer>
-
-
+<main class="app-container" [appSearchHighlight]="searchText">
+	<header (searchTextChange)="handleSearch($event)"></header>
+	<introduction></introduction>
+	<skills></skills>
+	<projects></projects>
+	<experience></experience>
+	<footer></footer>
 </main>

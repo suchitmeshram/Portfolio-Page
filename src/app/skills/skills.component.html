@@ -1,11 +1,43 @@
 <section class="section">
-  <h1>Skills</h1>
-  <div class="skills">
-    @for (skill of skills; track skill) {
-      <div class="skill-item">
-        <img [src] = "skill.image" alt = "{{ skill.name }}" class="skill-image">
-        <li>{{ skill.name }}</li>
-      </div>
+  <div class="section-heading">
+    <p class="eyebrow">Capabilities</p>
+    <h1>Skills</h1>
+    <p class="intro-copy">
+      A rotating cloud of the tools, frameworks, and platforms I use to ship production work
+      across frontend, backend, data, and AI-focused projects.
+    </p>
+  </div>
+
+  <div class="skills-shell">
+    <div
+      #cloudStage
+      class="skills"
+      (mousemove)="onMouseMove($event)"
+      (mouseleave)="resetMouseInfluence()"
+    >
+      @for (skill of displayedSkills; track skill) {
+        <div
+          class="skill-item"
+          [style.left.px]="skill.x"
+          [style.top.px]="skill.y"
+          [style.width.px]="skill.size"
+          [style.height.px]="skill.size"
+          [style.opacity]="skill.opacity"
+          [style.z-index]="skill.zIndex"
+          [style.transform]="'translate(-50%, -50%) scale(' + skill.scale + ')'"
+        >
+          <div class="skill-content">
+            <img [src]="skill.image" alt="{{ skill.name }}" class="skill-image">
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (skills.length > 4) {
+      <button (click)="toggleShowAll()">
+        {{ showAll ? 'Show Less' : 'Show All' }}
+      </button>
     }
   </div>
 </section>

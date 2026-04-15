@@ -1,13 +1,34 @@
 <section class="section">
-  <h1>Experience</h1>
+  <div class="section-heading">
+    <!-- <p class="eyebrow">Career Path</p> -->
+    <h1>Experience</h1>
+  </div>
   <div class="experience">
-    <h3>Full Stack / Drupal Developer</h3>
-    <p>2024 – Present</p>
-    <ul>
-      <li>Developed custom Drupal modules</li>
-      <li>Worked on multilingual websites</li>
-      <li>Integrated CKEditor plugins</li>
-      <li>Resolved cache and performance issues</li>
-    </ul>
+    @for (exp of experiences; track $index) {
+      <div class="exp">
+        <div class="exp-shell">
+          <div class="exp-meta">
+            <span class="exp-index">0{{ $index + 1 }}</span>
+            <div class="exp-header">
+              <span class="circle-icon"></span>
+              <div>
+                <p class="exp-label">Role</p>
+                <h3>{{ exp.title }}</h3>
+              </div>
+            </div>
+            <p class="duration"><strong>Duration: </strong>{{ exp.duration }}</p>
+          </div>
+          <div class="exp-body">
+            <p>{{ exp.description }}</p>
+            <p class="key-points">Key Responsibilities</p>
+            <ul [innerHTML]="exp.responsibility">
+              {{ exp.responsibility }}
+            </ul>
+            <p class="techstack">Technology Used</p>
+            <p>{{ exp.tech }}</p>
+          </div>
+        </div>
+      </div>
+    }
   </div>
 </section>

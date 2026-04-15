@@ -1,0 +1,35 @@
+@if(isModalOpen) {
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-button"><button class="close-btn" (click)="closeModal()">✖</button></div>
+
+      <div class="container">
+        
+        <!-- MAIN IMAGE -->
+        <section class="preview">
+          @if(selectedCharacter) {
+          <figure>
+            <img [src]="selectedCharacter.pic" />
+            <figcaption>{{ selectedCharacter.name }}</figcaption>
+          </figure>
+        }
+        </section>
+
+        <!-- THUMBNAILS -->
+        <aside class="thumbnails">
+          <ul>
+            @for (chr of displayCharacters; track $index) {
+            <li 
+              (click)="selectCharacter(chr)"
+              [class.active]="selectedCharacter?.name === chr.name"
+            >
+              <img [src]="chr.pic" />
+            </li>
+            }
+          </ul>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+}

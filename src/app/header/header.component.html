@@ -1,4 +1,51 @@
-<div class="hero">
-  <h1>I'm <span class="highlight">Suchit Meshram</span></h1>
-  <h1>Full Stack Developer<br>& AI/ML Enthusiast</h1>
-</div>
+<section class="hero">
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" />
+      </div>
+
+      <nav [class.open]="menuOpen">
+        <a href="#about" (click)="scrollToSection('.intro'); $event.preventDefault()">About</a>
+        <a href="#skills" (click)="scrollToSection('.skills'); $event.preventDefault()">Skills</a>
+        <a href="#projects" (click)="scrollToSection('.projects'); $event.preventDefault()">Projects</a>
+        <a href="#contact" (click)="scrollToSection('.contact'); $event.preventDefault()">Contact</a>
+      </nav>
+
+      <div class="search" role="search">
+        <div class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.49 21.49 20l-5.99-6zM10 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
+          </svg>
+        </div>
+        <input
+          type="text"
+          placeholder="Search..."
+          autocomplete="off"
+          aria-label="Search portfolio content"
+          [(ngModel)]="searchText"
+          (keydown.enter)="$event.preventDefault(); onSearch()"
+          (input)="onSearch()" />
+      </div>
+
+      <button class="menu-btn" type="button" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Portfolio</p>
+    <h1>I'm <span class="highlight">Suchit Meshram</span></h1>
+    <p class="role">Full Stack Developer and AI/ML Enthusiast</p>
+    <p class="hero-note">
+      Building reliable Angular and .NET applications while exploring practical AI systems,
+      intelligent automation, and product-focused engineering.
+    </p>
+  </div>
+
+  <div class="profile-wrap">
+    <img src="images/me.png" alt="Profile Picture" class="profile-pic" />
+  </div>
+</section>
