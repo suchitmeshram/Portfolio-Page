@@ -25,7 +25,14 @@
 
           <div class="project-info">
             <p class="tech"><strong>Techstack:</strong> {{ project.tech }}</p>
-            <p class="desc"><strong>Description:</strong> {{ project.description }}</p>
+            <div class="desc-scroll">
+              <strong>Description:</strong>
+              @if(project.description) {
+                {{ project.description }}
+              } @else {
+                No description available.
+              }
+            </div>
             <a href="javascript:void(0)" (click)="openChildModal(detailsModal, $index)">View Details</a>
             <app-details-modal #detailsModal></app-details-modal>
           </div>

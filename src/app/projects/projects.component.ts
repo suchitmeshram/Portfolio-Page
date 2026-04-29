@@ -32,7 +32,13 @@ This chatbot can be used for knowledge management, customer support, and automat
     }
   ];
 
+  showMoreStates: boolean[] = this.projects.map(() => false);
+
   @ViewChild('detailsModal') detailsModal!: DetailsModalComponent;
+
+  toggleShowMore(index: number) {
+    this.showMoreStates[index] = !this.showMoreStates[index];
+  }
 
   openChildModal(modal: any, projectIndex: number) {
     modal.setProject(projectIndex);

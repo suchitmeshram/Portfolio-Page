@@ -184,6 +184,10 @@
         min-height: 170vh;
     }
 
+    .hero-panel {
+        min-height: 70vh;;
+    }
+
     .content-panel {
         margin-top: -16vh;
         padding: 0 0.75rem 4rem;
@@ -192,7 +196,7 @@
     .content-card {
         padding: 1.25rem;
         border-radius: 1.25rem;
-        width: 95%;
+        width: 90%;
     }
 
     .content-card h2 {

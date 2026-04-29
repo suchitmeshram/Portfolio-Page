@@ -271,18 +271,26 @@ nav a:hover {
     padding-bottom: 18px;
   }
 
+  .navbar {
+    margin-top: -23%;
+  }
+
   nav {
     position: absolute;
-    top: 60px;
+    top: 30px;
     right: 0;
     background: var(--hero-background);
     flex-direction: column;
-    width: 200px;
-    padding: 15px;
+    width: fit-content;
+    transform: translateX(-50px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     display: none;
     text-align: center;
     gap: 1rem;
+  }
+
+  nav a {
+    font-size: 16px;
   }
 
   nav.open {
